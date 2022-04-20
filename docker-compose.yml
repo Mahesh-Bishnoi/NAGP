@@ -1,0 +1,115 @@
+version: '3.8'
+services:
+  zipkin-service:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+  rabbitmq-service:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+  eureka-service-discovery:
+    image: maheshbishnoi/nagp:eureka-service-discovery
+    ports:
+      - "8761:8761"
+    depends_on:
+      - zipkin-service
+    environment:
+      SPRING_ZIPKIN_BASE_URL : http://zipkin-service:9411/
+  customer-service:
+    image: maheshbishnoi/nagp:customer-service
+    ports:
+      - "8095:8095"
+    depends_on:
+      - zipkin-service
+      - eureka-service-discovery
+    environment:
+      EUREKA_SERVICE_URL : http://eureka-service-discovery:8761/eureka
+      SPRING_ZIPKIN_BASE_URL : http://zipkin-service:9411/
+      SPRING_RABBITMQ_HOST : rabbitmq-service
+  provider-service:
+    image: maheshbishnoi/nagp:provider-service
+    ports:
+      - "8094:8094"
+    depends_on:
+      - zipkin-service
+      - eureka-service-discovery
+    environment:
+      EUREKA_SERVICE_URL : http://eureka-service-discovery:8761/eureka
+      SPRING_ZIPKIN_BASE_URL : http://zipkin-service:9411/
+      SPRING_RABBITMQ_HOST : rabbitmq-service
+  admin-action-service:
+    image: maheshbishnoi/nagp:admin-action-service
+    ports:
+      - "8093:8093"
+    depends_on:
+      - zipkin-service
+      - eureka-service-discovery
+      - rabbitmq-service
+      - provider-service
+    environment:
+      EUREKA_SERVICE_URL : http://eureka-service-discovery:8761/eureka
+      SPRING_RABBITMQ_HOST : rabbitmq-service
+      SPRING_ZIPKIN_BASE_URL : http://zipkin-service:9411/
+      PROVIDER_SERVICE_URL : http://provider-service:8094
+  notification-service:
+    image: maheshbishnoi/nagp:notification-service
+    ports:
+      - "8096:8096"
+    depends_on:
+      - zipkin-service
+      - eureka-service-discovery
+      - rabbitmq-service
+      - provider-service
+      - customer-service
+    environment:
+      EUREKA_SERVICE_URL : http://eureka-service-discovery:8761/eureka
+      SPRING_RABBITMQ_HOST : rabbitmq-service
+      SPRING_ZIPKIN_BASE_URL : http://zipkin-service:9411/
+      PROVIDER_SERVICE_URL : http://provider-service:8094
+      CUSTOMER_SERVICE_URL : http://customer-service:8095
+  customer-request-service:
+    image: maheshbishnoi/nagp:customer-request-service
+    ports:
+      - "8091:8091"
+    depends_on:
+      - zipkin-service
+      - eureka-service-discovery
+      - rabbitmq-service
+    environment:
+      EUREKA_SERVICE_URL : http://eureka-service-discovery:8761/eureka
+      SPRING_RABBITMQ_HOST : rabbitmq-service
+      SPRING_ZIPKIN_BASE_URL : http://zipkin-service:9411/
+  service-provider-service:
+    image: maheshbishnoi/nagp:service-provider-service
+    ports:
+      - "8092:8092"
+    depends_on:
+      - zipkin-service
+      - eureka-service-discovery
+      - rabbitmq-service
+    environment:
+      EUREKA_SERVICE_URL : http://eureka-service-discovery:8761/eureka
+      SPRING_RABBITMQ_HOST : rabbitmq-service
+      SPRING_ZIPKIN_BASE_URL : http://zipkin-service:9411/
+  gateway-service:
+    image: maheshbishnoi/nagp:gateway-service
+    ports:
+      - "9000:9000"
+    depends_on:
+      - zipkin-service
+      - eureka-service-discovery
+    environment:
+      EUREKA_SERVICE_URL : http://eureka-service-discovery:8761/eureka
+      SPRING_ZIPKIN_BASE_URL : http://zipkin-service:9411/
+  admin-service:
+    image: maheshbishnoi/nagp:admin-service
+    ports: 
+    - "9999:9999"
+    depends_on:
+      - zipkin-service
+      - eureka-service-discovery
+    environment:
+      EUREKA_SERVICE_URL : http://eureka-service-discovery:8761/eureka
+      SPRING_ZIPKIN_BASE_URL : http://zipkin-service:9411/

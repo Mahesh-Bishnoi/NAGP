@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "f285b0fb-fbf7-4d98-952a-b97fdcd28d2a",
+		"name": "NAGP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "customer-service-request",
+			"item": [
+				{
+					"name": "place-service-request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/customer-request-service/place-service-request/plumber",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"customer-request-service",
+								"place-service-request",
+								"plumber"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "place-service-request-success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/customer-request-service/place-service-request/plumber",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"customer-request-service",
+										"place-service-request",
+										"plumber"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Apr 2022 15:37:10 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "\"OK\""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "service-provider-service",
+			"item": [
+				{
+					"name": "accept-service-request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/service-provider-service/accept-service-request/plumber",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"service-provider-service",
+								"accept-service-request",
+								"plumber"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "accept-service-request-success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/service-provider-service/accept-service-request/plumber",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"service-provider-service",
+										"accept-service-request",
+										"plumber"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Apr 2022 15:37:28 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "\"OK\""
+						}
+					]
+				},
+				{
+					"name": "reject-service-request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/service-provider-service/reject-service-request/plumber",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"service-provider-service",
+								"reject-service-request",
+								"plumber"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "reject-service-request-success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/service-provider-service/reject-service-request/plumber",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"service-provider-service",
+										"reject-service-request",
+										"plumber"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Apr 2022 15:37:38 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "\"OK\""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "customer-service",
+			"item": [
+				{
+					"name": "customer/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/customer-service/customer/id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"customer-service",
+								"customer",
+								"id"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "customer/{id}-success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/customer-service/customer/id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"customer-service",
+										"customer",
+										"id"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Apr 2022 15:39:28 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Customer1\",\n    \"address\": \"Some address\",\n    \"phone\": \"1234567890\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "provider-service",
+			"item": [
+				{
+					"name": "providers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/provider-service/providers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"provider-service",
+								"providers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "providers-success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/provider-service/providers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"provider-service",
+										"providers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Apr 2022 15:38:01 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"name\": \"Provider1\",\n        \"serviceType\": \"Plumber\",\n        \"phone\": \"123456789\"\n    },\n    {\n        \"name\": \"Provider2\",\n        \"serviceType\": \"Electrician\",\n        \"phone\": \"123456789\"\n    },\n    {\n        \"name\": \"Provider3\",\n        \"serviceType\": \"Yoga Trainer\",\n        \"phone\": \"123456789\"\n    },\n    {\n        \"name\": \"Provider4\",\n        \"serviceType\": \"Cook\",\n        \"phone\": \"123456789\"\n    },\n    {\n        \"name\": \"Provider5\",\n        \"serviceType\": \"Cleaner\",\n        \"phone\": \"123456789\"\n    },\n    {\n        \"name\": \"Provider6\",\n        \"serviceType\": \"Gardener\",\n        \"phone\": \"123456789\"\n    },\n    {\n        \"name\": \"Provider7\",\n        \"serviceType\": \"Tutor\",\n        \"phone\": \"123456789\"\n    },\n    {\n        \"name\": \"Provider8\",\n        \"serviceType\": \"Babysitter\",\n        \"phone\": \"123456789\"\n    },\n    {\n        \"name\": \"Provider9\",\n        \"serviceType\": \"Dance teacher\",\n        \"phone\": \"123456789\"\n    },\n    {\n        \"name\": \"Provider10\",\n        \"serviceType\": \"Personal Trainer\",\n        \"phone\": \"123456789\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "provider/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/provider-service/provider/id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"provider-service",
+								"provider",
+								"id"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "provider/{id}-success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/provider-service/provider/id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"provider-service",
+										"provider",
+										"id"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Apr 2022 15:39:12 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Provider1\",\n    \"serviceType\": \"Personal Trainer\",\n    \"phone\": \"123456789\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
