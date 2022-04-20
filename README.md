@@ -73,3 +73,28 @@ Start the server
 - Gateway : http://localhost:9000
 
 
+
+## Architecture
+
+![Architecture diagram](https://raw.githubusercontent.com/Mahesh-Bishnoi/NAGP/main/architecture-diagram.png)
+
+### Explaination
+- `zipkin-service`: Zipkin server for distributed tracing.
+- `rabbitmq-service`: RabbitMQ server for asynchronous messaging queues.
+- `eureka-service-discovery`: Eureka server for service discovery.
+- `customer-service`: Details about customers and customer related services.
+- `provider-service`: Details about service providers and service provider related services.
+- `admin-action-service`: Administration team services to assign service providers to customer requests.
+- `notification-service`: Notification services to send appropriate notifications to customers, service providers through various channels(Email, SMS, Push notification, etc.) based on the notification queues in the rabbitmq-service.
+- `customer-request-service`: Service to handle customer requests for a service and generate a new message and add the message to the queue in rabbitmq-service for a service request.
+- `service-provider-service`: Service to handle accepting or rejecting of service request by the service provider.
+- `gateway-service`: Edge service for clients to access other services.
+- `admin-service`: Admin panel service for monitoring the health and other metrics of the system.
+
+A customer when places an order for a service, it is routed to `customer-request-service` through `gateway-service`, `customer-request-service` then generates a new message and publish it to `rabbitmq-service`'s service request queue. `admin-action-service` subscribes to the service request queue and based on the business logic assigns a service provider from the `provider-service` and generates a new message and publishes it to notification queue on `rabbitmq-service`, `notification-service` subscribes to notification queue and based on the message fetches the details of provider from `provider-service` and send a service request notification to the provider.
+
+A provider can accept or reject the service request which is routed to `service-provider-service` through `gateway-service` and based on the response from provider a new message is generated and published to either notification queue(ACCEPTED) or service request queue(REJECTED).
+
+If the service provider accepts the service request, the message generated on the notification queue is subscribed by `notification-service` and it fetches the details of customer and service provider from `customer-service` and `provider-service` respectively and appropriate notifications are sent to customer and service provider with the details of each other.
+
+If the service provider rejects the service request, the message generated on the service request queue is subscribed by `admin-action-service` and based on the business logic it again assigns a new service provider and generates and publish a message on notification queue on `rabbitmq-service`.
