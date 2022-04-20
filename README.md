@@ -64,3 +64,12 @@ Start the server
   docker-compose up
 ```
 
+
+## Usage
+- RabbitMq : http://localhost:15672
+- Zipkin : http://localhost:9411
+- Eureka : http://localhost:8761
+- Admin : http://localhost:9999
+- Gateway : http://localhost:9000
+
+
