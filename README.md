@@ -79,6 +79,8 @@ A provider can accept or reject the service request which is routed to `service-
 If the service provider accepts the service request, the message generated on the notification queue is subscribed by `notification-service` and it fetches the details of customer and service provider from `customer-service` and `provider-service` respectively and appropriate notifications are sent to customer and service provider with the details of each other.
 
 If the service provider rejects the service request, the message generated on the service request queue is subscribed by `admin-action-service` and based on the business logic it again assigns a new service provider and generates and publish a message on notification queue on `rabbitmq-service`.
+
+Hybrid communication mode for the inter microservices communication is used, asynchronous communication between `customer-request-service` and `admin-action-service` as there may be a time lag between customer placing an order for service and admin team assigning a service provider based on availability. Similarly between `notification-service` and other services as there may be a lag due to external integration for notification channels(Email, SMS, etc.). Synchronous communication with `customer-service` and `provider-service` as these are just fetching the details of customer and service provider for enriching the message for notification.
 ## Authors
 
 - [@MaheshBishnoi](https://www.github.com/Mahesh-Bishnoi)
