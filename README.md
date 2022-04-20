@@ -9,20 +9,6 @@ Import to postman:
 #### NAGP.postman_collection.json
 
 
-## Authors
-
-- [@MaheshBishnoi](https://www.github.com/Mahesh-Bishnoi)
-
-
-## Deployment
-
-To deploy this project run
-
-```bash
-  docker-compose up
-```
-
-
 ## Features
 
 - Microservices architecture
@@ -32,11 +18,6 @@ To deploy this project run
 - Netflix eureka service discovery
 - Resilience4j circuit breaker
 - RabbitMq messaging
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
 
 ## Run Locally
 
@@ -98,3 +79,12 @@ A provider can accept or reject the service request which is routed to `service-
 If the service provider accepts the service request, the message generated on the notification queue is subscribed by `notification-service` and it fetches the details of customer and service provider from `customer-service` and `provider-service` respectively and appropriate notifications are sent to customer and service provider with the details of each other.
 
 If the service provider rejects the service request, the message generated on the service request queue is subscribed by `admin-action-service` and based on the business logic it again assigns a new service provider and generates and publish a message on notification queue on `rabbitmq-service`.
+## Authors
+
+- [@MaheshBishnoi](https://www.github.com/Mahesh-Bishnoi)
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
