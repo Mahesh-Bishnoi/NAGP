@@ -1,0 +1,1 @@
+mvnw spring-boot:build-image -Ddocker.hub.repository=REPOSITORY_NAME -Ddocker.hub.publish=true -Ddocker.hub.url=https://registry.hub.docker.com/ -Ddocker.hub.username=USERNAME -Ddocker.hub.password=PASSWORD -Ddocker.hub.email=EMAIL
